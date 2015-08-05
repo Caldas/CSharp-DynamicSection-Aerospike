@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace VTEX.Configuration.DynamicSection.Aerospike
 {
@@ -11,6 +6,7 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
     {
         internal const string Property_ClusterIps = "clusterIps";
         internal const string Property_Port = "port";
+        internal const string Property_Namespace = "namespace";
 
         /// <summary>
         /// Get or set a string array splitted by ',' with aerospike nodes ips
@@ -47,16 +43,16 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
         /// <summary>
         /// Get or set aerospike namespace where data will be stored/retreived
         /// </summary>
-        [ConfigurationProperty("namespace", IsRequired = true)]
+        [ConfigurationProperty(Property_Namespace, IsRequired = true)]
         public string Namespace
         {
             get
             {
-                return this["namespace"].ToString();
+                return this[Property_Namespace].ToString();
             }
             set
             {
-                this["namespace"] = value;
+                this[Property_Namespace] = value;
             }
         }
     }
