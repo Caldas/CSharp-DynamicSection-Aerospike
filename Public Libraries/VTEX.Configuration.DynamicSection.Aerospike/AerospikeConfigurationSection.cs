@@ -2,6 +2,9 @@
 
 namespace VTEX.Configuration.DynamicSection.Aerospike
 {
+    /// <summary>
+    /// Define a configuration section capable of save/retrieve properties from values at an Aerospike cluster
+    /// </summary>
     public class AerospikeConfigurationSection : DynamicConfigurationSection
     {
         internal const string Property_ClusterIps = "clusterIps";

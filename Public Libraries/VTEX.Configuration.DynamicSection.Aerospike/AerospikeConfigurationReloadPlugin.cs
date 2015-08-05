@@ -9,6 +9,9 @@ using System.Text;
 
 namespace VTEX.Configuration.DynamicSection.Aerospike
 {
+    /// <summary>
+    /// Define a reload plugin capable of save/retrieve properties data from an Aerospike cluster
+    /// </summary>
     public class AerospikeConfigurationReloadPlugin : IConfigurationReloadPlugin
     {
         private static readonly object LockState = new object();
@@ -17,11 +20,18 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
 
         private static AsyncClient AerospikeAsyncClient = null;
 
+        /// <summary>
+        /// Event used to set property values at 'DynamicConfigurationSection' by plugin
+        /// </summary>
         public event EventHandler<Tuple<string, object>> PropertyLoaded = delegate { };
 
         private static string appName = string.Empty;
         private static string appVersion = string.Empty;
 
+        /// <summary>
+        /// Method used to start retreive process to get latest properties values from plugin storage
+        /// </summary>
+        /// <param name="configurationSection">Base configuration section, provided in order to be able to retreive properties</param>
         public void GetLastestPropertiesValues(ConfigurationSection configurationSection)
         {
             try

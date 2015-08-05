@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+	<metadata>
+		<id>DynamicConfigurationSection-Aerospike</id>
+		<version>$version$</version>
+		<title>VTEX Dynamic ConfigurationSection Aerospike Library</title>
+		<authors>FabioCaldas</authors>
+		<owners>VTEX</owners>
+		<projectUrl>https://github.com/vtex/CSharp-DynamicSection-Aerospike</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Aerospike plugin for C# DynamicSection project</description>
+		<releaseNotes />
+		<copyright>Copyright © Vtex 2015</copyright>
+		<tags>VTEX Dynamic ConfigurationSection Reload Aerospike</tags>
+	</metadata>
+	<files>
+		<file src="bin\Release\VTEX.Configuration.DynamicSection.Aerospike.pdb" target="lib\net45" />
+	</files>
+</package>
