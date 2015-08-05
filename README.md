@@ -1,4 +1,4 @@
-# C# DynamicSection Plugin - Aerospike
-Aerospike plugin for [C# DynamicSection project](https://github.com/vtex/CSharp-DynamicSection)
+# C# DynamicSection - Aerospike
+Aerospike library for [C# DynamicSection project](https://github.com/vtex/CSharp-DynamicSection)
 
-Read more on project [wiki](https://github.com/vtex/CSharp-DynamicSection-Plugin-Aerospike/wiki).
+Read more on project [wiki](https://github.com/vtex/CSharp-DynamicSection-Aerospike/wiki).
