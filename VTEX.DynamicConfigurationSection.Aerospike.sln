@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{6991D4BF-F7EE-4687-96D9-CAFC31775A9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Public Libraries", "Public Libraries", "{D1FB98BB-E8B7-4FD7-A450-597C53C66E8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VTEX.Configuration.DynamicSection.Aerospike", "Public Libraries\VTEX.Configuration.DynamicSection.Aerospike\VTEX.Configuration.DynamicSection.Aerospike.csproj", "{635474E1-DA8E-4DFA-9081-9F60218073AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{635474E1-DA8E-4DFA-9081-9F60218073AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635474E1-DA8E-4DFA-9081-9F60218073AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635474E1-DA8E-4DFA-9081-9F60218073AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635474E1-DA8E-4DFA-9081-9F60218073AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{635474E1-DA8E-4DFA-9081-9F60218073AB} = {D1FB98BB-E8B7-4FD7-A450-597C53C66E8D}
+	EndGlobalSection
+EndGlobal
