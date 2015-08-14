@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 
@@ -36,7 +37,15 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
         {
             try
             {
-                var clusterIps = configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_ClusterIps].Value.ToString();
+                string clusterIps = configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_ClusterIps].Value.ToString();
+                if (string.IsNullOrWhiteSpace(clusterIps))
+                {
+                    var clusterDns = configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_ClusterDns].Value.ToString();
+                    if (string.IsNullOrWhiteSpace(clusterDns))
+                        throw new ConfigurationSectionException();
+                    var ipHostEntry = Dns.GetHostEntry(clusterDns);
+                    clusterIps = string.Join(",", ipHostEntry.AddressList.Select(ip => ip.ToString()));
+                }
                 var port = (int)configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_Port].Value;
                 CheckClient(clusterIps, port);
 
