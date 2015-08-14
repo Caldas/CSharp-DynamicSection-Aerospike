@@ -50,7 +50,8 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
                 CheckClient(clusterIps, port);
 
                 var aerospikeNamespace = configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_Namespace].Value.ToString();
-                var key = GetKey(aerospikeNamespace);
+                var configTypeName = configurationSection.ElementInformation.Type.Name;
+                var key = GetKey(aerospikeNamespace, configTypeName);
 
                 var record = AerospikeAsyncClient.Get(new BatchPolicy() { }, key);
                 foreach (PropertyInformation item in configurationSection.ElementInformation.Properties)
@@ -81,9 +82,10 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
             AerospikeAsyncClient.Put(AerospikeWritePolicy, key, new Bin(item.Name, item.Value));
         }
 
-        private static Key GetKey(string aerospikeNamespace)
+        private static Key GetKey(string aerospikeNamespace, string configTypeName)
         {
-            return new Key(aerospikeNamespace, GetAppName(), GetAppVersion());
+            var key = string.Format("{0}_{1}", GetAppName(), GetAppVersion());
+            return new Key(aerospikeNamespace, configTypeName, key);
         }
 
         private static string GetAppName()
