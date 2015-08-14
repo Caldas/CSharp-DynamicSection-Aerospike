@@ -8,13 +8,14 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
     public class AerospikeConfigurationSection : DynamicConfigurationSection
     {
         internal const string Property_ClusterIps = "clusterIps";
+        internal const string Property_ClusterDns = "clusterDns";
         internal const string Property_Port = "port";
         internal const string Property_Namespace = "namespace";
 
         /// <summary>
         /// Get or set a string array splitted by ',' with aerospike nodes ips
         /// </summary>
-        [ConfigurationProperty(Property_ClusterIps, IsRequired = true)]
+        [ConfigurationProperty(Property_ClusterIps, IsRequired = false)]
         public string ClusterIps
         {
             get
@@ -24,6 +25,22 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
             set
             {
                 this[Property_ClusterIps] = value;
+            }
+        }
+
+        /// <summary>
+        /// Get or set a string array splitted by ',' with aerospike nodes ips
+        /// </summary>
+        [ConfigurationProperty(Property_ClusterDns, IsRequired = false)]
+        public string ClusterDns
+        {
+            get
+            {
+                return this[Property_ClusterDns].ToString();
+            }
+            set
+            {
+                this[Property_ClusterDns] = value;
             }
         }
 
