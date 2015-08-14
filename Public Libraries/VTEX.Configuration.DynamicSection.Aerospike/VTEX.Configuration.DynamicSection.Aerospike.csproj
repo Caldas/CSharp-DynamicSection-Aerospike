@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="AerospikeConfigurationReloadPlugin.cs" />
     <Compile Include="AerospikeConfigurationSection.cs" />
+    <Compile Include="ConfigurationSectionException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

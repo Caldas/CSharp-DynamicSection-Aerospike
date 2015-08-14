@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 
@@ -36,12 +37,21 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
         {
             try
             {
-                var clusterIps = configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_ClusterIps].Value.ToString();
+                string clusterIps = configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_ClusterIps].Value.ToString();
+                if (string.IsNullOrWhiteSpace(clusterIps))
+                {
+                    var clusterDns = configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_ClusterDns].Value.ToString();
+                    if (string.IsNullOrWhiteSpace(clusterDns))
+                        throw new ConfigurationSectionException();
+                    var ipHostEntry = Dns.GetHostEntry(clusterDns);
+                    clusterIps = string.Join(",", ipHostEntry.AddressList.Select(ip => ip.ToString()));
+                }
                 var port = (int)configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_Port].Value;
                 CheckClient(clusterIps, port);
 
                 var aerospikeNamespace = configurationSection.ElementInformation.Properties[AerospikeConfigurationSection.Property_Namespace].Value.ToString();
-                var key = GetKey(aerospikeNamespace);
+                var configTypeName = configurationSection.ElementInformation.Type.Name;
+                var key = GetKey(aerospikeNamespace, configTypeName);
 
                 var record = AerospikeAsyncClient.Get(new BatchPolicy() { }, key);
                 foreach (PropertyInformation item in configurationSection.ElementInformation.Properties)
@@ -72,18 +82,16 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
             AerospikeAsyncClient.Put(AerospikeWritePolicy, key, new Bin(item.Name, item.Value));
         }
 
-        private static Key GetKey(string aerospikeNamespace)
+        private static Key GetKey(string aerospikeNamespace, string configTypeName)
         {
-            return new Key(aerospikeNamespace, GetAppName(), GetAppVersion());
+            var key = string.Format("{0}_{1}", GetAppName(), GetAppVersion()).Replace(" ","");
+            return new Key(aerospikeNamespace, configTypeName, key);
         }
 
         private static string GetAppName()
         {
             if (string.IsNullOrWhiteSpace(appName))
-            {
-                var executingAssembly = Assembly.GetExecutingAssembly();
-                appName = executingAssembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
-            }
+                appName = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
             return appName;
         }
 
@@ -91,7 +99,7 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
         {
             if (string.IsNullOrWhiteSpace(appVersion))
             {
-                var executingAssembly = Assembly.GetExecutingAssembly();
+                var executingAssembly = Assembly.GetEntryAssembly();
                 AssemblyInformationalVersionAttribute assemblyInformationalVersion = executingAssembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>().FirstOrDefault() as AssemblyInformationalVersionAttribute;
                 if (assemblyInformationalVersion == null)
                 {
