@@ -84,17 +84,14 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
 
         private static Key GetKey(string aerospikeNamespace, string configTypeName)
         {
-            var key = string.Format("{0}_{1}", GetAppName(), GetAppVersion());
+            var key = string.Format("{0}_{1}", GetAppName(), GetAppVersion()).Replace(" ","");
             return new Key(aerospikeNamespace, configTypeName, key);
         }
 
         private static string GetAppName()
         {
             if (string.IsNullOrWhiteSpace(appName))
-            {
-                var executingAssembly = Assembly.GetExecutingAssembly();
-                appName = executingAssembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
-            }
+                appName = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
             return appName;
         }
 
@@ -102,7 +99,7 @@ namespace VTEX.Configuration.DynamicSection.Aerospike
         {
             if (string.IsNullOrWhiteSpace(appVersion))
             {
-                var executingAssembly = Assembly.GetExecutingAssembly();
+                var executingAssembly = Assembly.GetEntryAssembly();
                 AssemblyInformationalVersionAttribute assemblyInformationalVersion = executingAssembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>().FirstOrDefault() as AssemblyInformationalVersionAttribute;
                 if (assemblyInformationalVersion == null)
                 {
