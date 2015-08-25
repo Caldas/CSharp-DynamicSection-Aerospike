@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
-using VTEX.Configuration.DynamicSection.Aerospike;
+using DynamicSection.Aerospike;
 
-namespace VTEX.Configuration.DynamicSection.SampleConsoleApplication
+namespace DynamicSection.SampleConsoleApplication
 {
     /// <summary>
     /// Define a custom configuration section with two properties.

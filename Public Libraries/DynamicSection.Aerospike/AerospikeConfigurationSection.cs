@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace VTEX.Configuration.DynamicSection.Aerospike
+namespace DynamicSection.Aerospike
 {
     /// <summary>
     /// Define a configuration section capable of save/retrieve properties from values at an Aerospike cluster

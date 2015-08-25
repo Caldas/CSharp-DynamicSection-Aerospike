@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Application
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Public Libraries", "Public Libraries", "{D1FB98BB-E8B7-4FD7-A450-597C53C66E8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VTEX.Configuration.DynamicSection.Aerospike", "Public Libraries\VTEX.Configuration.DynamicSection.Aerospike\VTEX.Configuration.DynamicSection.Aerospike.csproj", "{635474E1-DA8E-4DFA-9081-9F60218073AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicSection.Aerospike", "Public Libraries\DynamicSection.Aerospike\DynamicSection.Aerospike.csproj", "{635474E1-DA8E-4DFA-9081-9F60218073AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VTEX.Configuration.DynamicSection.SampleConsoleApplication", "Applications\SampleConsoleApplication\VTEX.Configuration.DynamicSection.SampleConsoleApplication.csproj", "{8D069025-4E5B-454A-8C79-E266F9834502}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicSection.SampleConsoleApplication", "Applications\SampleConsoleApplication\DynamicSection.SampleConsoleApplication.csproj", "{8D069025-4E5B-454A-8C79-E266F9834502}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

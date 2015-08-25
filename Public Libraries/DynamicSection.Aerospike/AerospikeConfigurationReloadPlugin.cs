@@ -8,7 +8,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 
-namespace VTEX.Configuration.DynamicSection.Aerospike
+namespace DynamicSection.Aerospike
 {
     /// <summary>
     /// Define a reload plugin capable of save/retrieve properties data from an Aerospike cluster
