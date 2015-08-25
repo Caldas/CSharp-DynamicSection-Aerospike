@@ -32,14 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DynamicSection, Version=2.0.0.41651, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DynamicConfigurationSection.2.0.0.41651\lib\net45\DynamicSection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="VTEX.Configuration.DynamicSection, Version=1.0.0.28654, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DynamicConfigurationSection.1.0.0.28654\lib\net45\VTEX.Configuration.DynamicSection.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -51,7 +51,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Public Libraries\VTEX.Configuration.DynamicSection.Aerospike\VTEX.Configuration.DynamicSection.Aerospike.csproj">
+    <ProjectReference Include="..\..\Public Libraries\DynamicSection.Aerospike\DynamicSection.Aerospike.csproj">
       <Project>{635474e1-da8e-4dfa-9081-9f60218073ab}</Project>
       <Name>VTEX.Configuration.DynamicSection.Aerospike</Name>
     </ProjectReference>

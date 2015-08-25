@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VTEX.Configuration.DynamicSection.Aerospike
+namespace DynamicSection.Aerospike
 {
     public class ConfigurationSectionException : Exception
     {

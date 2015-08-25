@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Timers;
 
-namespace VTEX.Configuration.DynamicSection.SampleConsoleApplication
+namespace DynamicSection.SampleConsoleApplication
 {
     class Program
     {
